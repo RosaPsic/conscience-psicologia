@@ -41,6 +41,19 @@ def health():
         'crp': app.config.get('CRP_NUMBER')
     })
 
+@app.route('/api/debug', methods=['GET'])
+def debug():
+    from config import Config
+    return jsonify({
+        'client_exists': db.client is not None,
+        'supabase_url': Config.SUPABASE_URL is not None,
+        'supabase_key': Config.SUPABASE_KEY is not None,
+        'test_query': {
+            'pacientes_count': len(db.get_pacientes()),
+            'sessoes_count': len(db.get_sessoes())
+        }
+    })
+
 # ═══════════════════════════════════════════════════════════
 # PACIENTES
 # ═══════════════════════════════════════════════════════════
