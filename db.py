@@ -11,12 +11,16 @@ class Database:
         self.client: Client = None
 
         # Só conecta se tiver as credenciais
+        print(f"[DB] SUPABASE_URL={self.url is not None}, SUPABASE_KEY={self.key is not None}")
         if self.url and self.key:
             try:
                 self.client = create_client(self.url, self.key)
+                print(f"[DB] ✅ Conectado ao Supabase com sucesso")
             except Exception as e:
-                print(f"⚠️  Aviso: Não consegui conectar ao Supabase: {e}")
+                print(f"[DB] ❌ Erro ao conectar ao Supabase: {e}")
                 self.client = None
+        else:
+            print(f"[DB] ⚠️  Credenciais do Supabase não configuradas")
 
     # ═══════════════════════════════════════════════════════════
     # PACIENTES
