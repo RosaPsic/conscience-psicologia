@@ -29,12 +29,16 @@ class Database:
     def get_pacientes(self, user_id=None):
         """Retorna todos os pacientes"""
         if not self.client:
+            print("[get_pacientes] Cliente não inicializado")
             return []
         try:
             response = self.client.table('pacientes').select('*').execute()
+            print(f"[get_pacientes] Sucesso: {len(response.data)} registros")
             return response.data
         except Exception as e:
-            print(f"Erro ao obter pacientes: {e}")
+            print(f"[get_pacientes] Erro: {type(e).__name__}: {e}")
+            import traceback
+            traceback.print_exc()
             return []
 
     def get_paciente(self, paciente_id):
@@ -89,6 +93,7 @@ class Database:
     def get_sessoes(self, filters=None):
         """Retorna sessões com filtros opcionais"""
         if not self.client:
+            print("[get_sessoes] Cliente não inicializado")
             return []
         try:
             query = self.client.table('sessoes').select('*')
@@ -96,9 +101,12 @@ class Database:
                 for key, value in filters.items():
                     query = query.eq(key, value)
             response = query.execute()
+            print(f"[get_sessoes] Sucesso: {len(response.data)} registros")
             return response.data
         except Exception as e:
-            print(f"Erro ao obter sessões: {e}")
+            print(f"[get_sessoes] Erro: {type(e).__name__}: {e}")
+            import traceback
+            traceback.print_exc()
             return []
 
     def criar_sessao(self, paciente_id: int, data_sessao: str, **kwargs):
