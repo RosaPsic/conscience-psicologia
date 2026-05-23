@@ -1,0 +1,103 @@
+═══════════════════════════════════════════════════════════════════════════════
+                        CONSCIENCE PSICOLOGIA
+                       COMECE AQUI - 5 MINUTOS
+═══════════════════════════════════════════════════════════════════════════════
+
+
+🚀 VOCÊ TEM TUDO PRONTO! Apenas 3 passos:
+
+
+PASSO 1: GERAR TOKEN GITHUB (2 MINUTOS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Abra: https://github.com/settings/tokens
+
+2. Clique: "Generate new token (classic)"
+
+3. Preencha:
+   Name: conscience-deploy
+   Escopo: marque "repo" (checkbox)
+
+4. Clique: "Generate token"
+
+5. COPIE O TOKEN (aparece uma única vez!)
+   Exemplo: ghp_1234567890abcdefghijk1234567890abc
+
+
+PASSO 2: RODAR SCRIPT DEPLOY (2 MINUTOS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Abra Terminal
+
+2. Cole isto (trocar SEU_TOKEN):
+
+   export GITHUB_TOKEN=SEU_TOKEN
+   cd ~/conscience-psicologia
+   bash deploy.sh
+
+3. Exemplo completo:
+
+   export GITHUB_TOKEN=ghp_1234567890abcdefghijk1234567890abc
+   cd ~/conscience-psicologia
+   bash deploy.sh
+
+4. Aguarde: ✅ Push realizado com sucesso!
+
+
+PASSO 3: CONFIGURAR VERCEL (1 MINUTO)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Abra: https://vercel.com/dashboard
+
+2. Clique: "New Project"
+
+3. Clique: "Import Git Repository"
+
+4. Procure: "conscience-psicologia"
+
+5. Clique: "Import"
+
+6. Adicione variáveis de ambiente:
+
+   SUPABASE_URL = https://rnuwdhlqfjyqxqmxizcr.supabase.co
+   SUPABASE_KEY = sb_publishable_sSuHtSFEiQQ695n6H2zQsg_-fkwkJ9k
+   FLASK_ENV = production
+   SECRET_KEY = seu-secret-key-qualquer-coisa
+
+7. Clique: "Deploy"
+
+8. Aguarde: 2-3 minutos
+
+9. Clique: "Visit"
+
+✅ PRONTO! Seu app está no ar!
+
+
+RESULTADO FINAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Local:  http://localhost:5000 (seu computador)
+GitHub: https://github.com/RosaPsic/conscience-psicologia
+Vercel: https://seu-projeto.vercel.app (na nuvem!)
+
+
+IMPORTANTE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ NÃO compartilhe o token de GitHub
+✅ Deploy automático: toda vez que fizer git push, o Vercel atualiza
+✅ Script está pronto em: ~/conscience-psicologia/deploy.sh
+
+
+DOCUMENTAÇÃO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+README.md          → Visão geral do projeto
+SETUP.md           → Como configurar localmente
+PUSH_E_DEPLOY.md   → Instruções detalhadas
+VERCEL_DEPLOY.md   → Deploy no Vercel passo-a-passo
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                    5 MINUTOS = APP NO AR! 🚀
+═══════════════════════════════════════════════════════════════════════════════
