@@ -1,11 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from config import config, Config
 from db import db
 from datetime import datetime
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='frontend', static_url_path='')
 app.config.from_object(config[os.getenv('FLASK_ENV', 'development')])
 
 # CORS
@@ -16,6 +16,17 @@ CORS(app, resources={
         "allow_headers": ["Content-Type", "Authorization"]
     }
 })
+
+# ═══════════════════════════════════════════════════════════
+# ROTAS ESTÁTICAS
+# ═══════════════════════════════════════════════════════════
+
+@app.route('/')
+def index():
+    try:
+        return send_from_directory('frontend', 'index.html')
+    except:
+        return jsonify({'status': 'ok', 'message': 'Conscience Psicologia API'})
 
 # ═══════════════════════════════════════════════════════════
 # HEALTH CHECK
