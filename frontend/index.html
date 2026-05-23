@@ -93,7 +93,9 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
 </main>
 
 <script>
-const API_URL = 'http://localhost:5000/api';
+const API_URL = window.location.hostname === 'localhost'
+  ? 'http://localhost:5000/api'
+  : `${window.location.origin}/api`;
 
 // ═══════════════════════════════════════════════════════════════
 // REQUISIÇÕES API
