@@ -8,7 +8,15 @@ class Database:
     def __init__(self):
         self.url = Config.SUPABASE_URL
         self.key = Config.SUPABASE_KEY
-        self.client: Client = create_client(self.url, self.key)
+        self.client: Client = None
+
+        # Só conecta se tiver as credenciais
+        if self.url and self.key:
+            try:
+                self.client = create_client(self.url, self.key)
+            except Exception as e:
+                print(f"⚠️  Aviso: Não consegui conectar ao Supabase: {e}")
+                self.client = None
 
     # ═══════════════════════════════════════════════════════════
     # PACIENTES
