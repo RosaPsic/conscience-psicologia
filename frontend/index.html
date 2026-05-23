@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Conscience Psicologia</title>
+<title>Consciense Psicologia</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 :root{
@@ -30,6 +30,7 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
 .nav-item.active{background:rgba(255,255,255,0.13);color:#fff;border-left-color:#fff;}
 .nav-icon{font-size:14px;width:16px;text-align:center;flex-shrink:0;}
 .nav-badge{margin-left:auto;background:var(--accent2);color:#fff;font-size:10px;font-weight:500;padding:1px 6px;border-radius:10px;}
+.nav-badge.warn{background:#C17B2A;}
 .sb-footer{padding:12px 16px;border-top:1px solid rgba(255,255,255,0.1);}
 .sb-footer p{font-size:10px;color:rgba(255,255,255,0.4);line-height:1.6;}
 .main{flex:1;overflow-y:auto;}
@@ -42,171 +43,1127 @@ body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min
 .btn:hover{background:var(--surface2);}
 .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent);}
 .btn-primary:hover{opacity:.87;}
+.btn-sm{padding:4px 10px;font-size:12px;}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-bottom:18px;}
 .stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:13px 15px;box-shadow:var(--sh);}
 .stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
 .stat-val{font-size:21px;font-weight:500;line-height:1;}
+.stat-sub{font-size:11px;color:var(--text3);margin-top:3px;}
+.verde{color:var(--green);}.vermelho{color:var(--red);}.amarelo{color:var(--amber);}.roxo{color:var(--accent);}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:14px;}
 .card-header{padding:11px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
 .card-title{font-size:13px;font-weight:500;color:var(--text);}
+input,select,textarea{font-family:"DM Sans",sans-serif;font-size:13px;padding:7px 10px;border:1px solid var(--border2);border-radius:var(--rs);background:var(--surface);color:var(--text);outline:none;}
+input:focus,select:focus{border-color:var(--accent);}
+input[type=date],select{height:34px;}
+input[type=text],input[type=number]{height:34px;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+th{padding:9px 12px;text-align:left;font-size:11px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;background:var(--surface2);border-bottom:1px solid var(--border);white-space:nowrap;}
+td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:var(--bg);}
+.icon-btn{background:none;border:none;cursor:pointer;padding:4px;color:var(--text3);font-size:13px;border-radius:4px;}
+.icon-btn:hover{color:var(--text);background:var(--surface2);}
+.badge{display:inline-block;padding:2px 7px;border-radius:20px;font-size:11px;font-weight:500;white-space:nowrap;}
+.b-pago{background:var(--green-bg);color:var(--green);}
+.b-pendente{background:var(--amber-bg);color:var(--amber);}
+.b-atraso{background:var(--red-bg);color:var(--red);}
+.b-plano{background:var(--blue-bg);color:var(--blue);}
+.b-nf-ok{background:var(--purple-bg);color:var(--purple);}
+.b-nf-pend{background:#FFF3E0;color:#E65100;}
+.b-ok{background:var(--green-bg);color:var(--green);}
+.b-agend{background:var(--accent-light);color:var(--accent);}
+.pac-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;}
+.pac-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:0;box-shadow:var(--sh);cursor:pointer;transition:box-shadow .15s;}
+.pac-card:hover{box-shadow:0 4px 16px rgba(107,63,94,0.14);}
+.pac-top{padding:12px 14px;border-bottom:1px solid var(--border);}
+.pac-nome{font-size:14px;font-weight:500;color:var(--text);margin-bottom:2px;}
+.pac-orig{font-size:11px;color:var(--text3);}
+.pac-body{padding:10px 14px;display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;}
 .alert{display:flex;align-items:flex-start;gap:9px;border:1px solid var(--border);border-radius:var(--r);padding:11px 14px;margin-bottom:10px;font-size:13px;color:var(--text2);}
+.alert.danger{border-left:3px solid var(--red);background:var(--red-bg);}
+.alert.warning{border-left:3px solid var(--amber);background:var(--amber-bg);}
+.alert.success{border-left:3px solid var(--green);background:var(--green-bg);}
 .alert.info{border-left:3px solid var(--blue);background:var(--blue-bg);}
-.loading{text-align:center;padding:20px;color:var(--text3);}
-.spinner{display:inline-block;width:20px;height:20px;border:3px solid var(--border2);border-top:3px solid var(--accent);border-radius:50%;animation:spin 1s linear infinite;}
-@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.nf-row{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--border);}
+.nf-row:last-child{border-bottom:none;}
+.totais-row{display:flex;gap:12px;padding:10px 16px;background:var(--surface2);border-top:1px solid var(--border);flex-wrap:wrap;}
+.total-item{font-size:13px;color:var(--text2);}
+.empty{text-align:center;padding:2.5rem;color:var(--text3);font-size:13px;}
+.toolbar{display:flex;gap:7px;align-items:center;flex-wrap:wrap;}
+.search-wrap{position:relative;display:inline-flex;align-items:center;}
+.search-wrap input{padding-left:28px;width:200px;}
+.search-icon{position:absolute;left:8px;font-size:13px;color:var(--text3);pointer-events:none;}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto;}
+.overlay.open{display:flex;}
+.modal{background:var(--surface);border-radius:var(--r);padding:24px;width:100%;max-width:500px;box-shadow:0 8px 40px rgba(0,0,0,0.18);}
+.modal h3{font-family:"DM Serif Display",serif;font-size:18px;margin-bottom:16px;color:var(--text);}
+.form-row{margin-bottom:12px;}
+.form-row label{display:block;font-size:12px;color:var(--text2);margin-bottom:4px;font-weight:500;}
+.form-row input,.form-row select,.form-row textarea{width:100%;}
+.form-two{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.form-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;}
+.sep{height:1px;background:var(--border);margin:14px 0;}
+.tab-row{display:flex;border-bottom:1px solid var(--border);margin-bottom:16px;}
+.tab{padding:8px 16px;font-size:13px;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;background:none;border-top:none;border-left:none;border-right:none;font-family:"DM Sans",sans-serif;}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:500;}
+.dem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:16px;}
+.dem-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;}
+.dem-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+.dem-val{font-size:20px;font-weight:500;}
+/* AGENDA */
+.ag-week{overflow-x:auto;}
+.ag-table{width:100%;border-collapse:collapse;min-width:700px;table-layout:fixed;}
+.ag-table th{background:var(--surface2);padding:8px 6px;text-align:center;border:1px solid var(--border);font-size:12px;}
+.ag-table td{border:1px solid var(--border);padding:3px;vertical-align:top;height:36px;width:13%;}
+.ag-hora{width:60px;font-size:11px;color:var(--text3);text-align:right;padding:4px 8px;vertical-align:top;border:1px solid var(--border);background:var(--surface2);}
+.ag-slot{min-height:32px;cursor:pointer;border-radius:4px;padding:1px;}
+.ag-slot:hover{background:var(--accent-light);}
+.ag-card{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:3px 5px;margin-bottom:2px;font-size:11px;}
+.ag-hoje th{background:var(--accent-light);color:var(--accent);}
 </style>
 </head>
 <body>
 <aside class="sidebar">
   <div class="sb-logo">
-    <h1>Conscience Psicologia</h1>
+    <h1>Consciense Psicologia</h1>
     <p>Rosa Almeida - CRP 03/11768</p>
   </div>
   <nav class="sb-nav">
     <div class="nav-group">Geral</div>
-    <div class="nav-item active" data-aba="dashboard" onclick="ir('dashboard')"><span class="nav-icon">📊</span> Painel</div>
-    <div class="nav-item" data-aba="pacientes" onclick="ir('pacientes')"><span class="nav-icon">👥</span> Pacientes</div>
+    <div class="nav-item" data-aba="agenda" onclick="ir('agenda')"><span class="nav-icon">&#128197;</span> Agenda</div>
+    <div class="nav-item active" data-aba="dashboard" onclick="ir('dashboard')"><span class="nav-icon">&#8862;</span> Painel</div>
+    <div class="nav-item" data-aba="pacientes" onclick="ir('pacientes')"><span class="nav-icon">&#9673;</span> Pacientes <span class="nav-badge" id="b-pac">0</span></div>
+    <div class="nav-item" data-aba="demonstrativo" onclick="ir('demonstrativo')"><span class="nav-icon">&#128202;</span> Demonstrativo</div>
+    <div class="nav-group">Origem</div>
+    <div class="nav-item" data-aba="particular" onclick="ir('particular')"><span class="nav-icon">&#9670;</span> Particular <span class="nav-badge" id="b-part">0</span></div>
+    <div class="nav-item" data-aba="volare" onclick="ir('volare')"><span class="nav-icon">&#9671;</span> Volare <span class="nav-badge" id="b-vol">0</span></div>
+    <div class="nav-item" data-aba="amar" onclick="ir('amar')"><span class="nav-icon">&#9671;</span> Amar <span class="nav-badge" id="b-amar">0</span></div>
+    <div class="nav-group">Fiscal</div>
+    <div class="nav-item" data-aba="nf" onclick="ir('nf')"><span class="nav-icon">&#128221;</span> Notas fiscais <span class="nav-badge warn" id="b-nf" style="display:none">!</span></div>
+    <div class="nav-item" data-aba="alertas" onclick="ir('alertas')"><span class="nav-icon">&#9888;</span> Alertas <span class="nav-badge warn" id="b-alert" style="display:none">!</span></div>
   </nav>
   <div class="sb-footer">
-    <p>(71) 99231-0234<br>rosa.psic@hotmail.com<br>Conscience Psicologia Ltda</p>
+    <p>(71) 99231-0234<br>rosa.psic@hotmail.com<br>Consciense Psicologia Ltda</p>
   </div>
 </aside>
-
 <main class="main">
-  <!-- DASHBOARD -->
-  <div id="sec-dashboard" class="section active">
-    <div class="topbar"><h2>Painel geral</h2></div>
-    <div class="content">
-      <div class="stats" id="stats"></div>
-      <div class="alert info">
-        <span>ℹ️</span>
-        <span>Backend conectado em <strong>http://localhost:5000</strong></span>
+
+<!-- AGENDA -->
+<div id="sec-agenda" class="section">
+  <div class="topbar">
+    <h2>Agenda semanal</h2>
+    <div style="display:flex;gap:8px;">
+      <button class="btn" onclick="semanaAnterior()">&#8592; Anterior</button>
+      <button class="btn" onclick="semanaAtual()">Hoje</button>
+      <button class="btn" onclick="proximaSemana()">Proxima &#8594;</button>
+    </div>
+  </div>
+  <div class="content">
+    <div id="ag-titulo" style="font-size:13px;color:var(--text3);margin-bottom:12px;"></div>
+    <div class="ag-week"><table class="ag-table"><thead id="ag-head"></thead><tbody id="ag-body"></tbody></table></div>
+    <div style="margin-top:10px;font-size:12px;color:var(--text3);">Clique em qualquer horario para agendar uma sessao.</div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="sec-dashboard" class="section active">
+  <div class="topbar"><h2>Painel geral</h2><button class="btn btn-primary" onclick="abrirModal()">+ Novo registro</button></div>
+  <div class="content">
+    <div class="stats" id="stats"></div>
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Todos os registros</span>
+        <div class="toolbar">
+          <div class="search-wrap"><span class="search-icon">&#128269;</span><input type="text" id="busca-todos" placeholder="Buscar..." oninput="renderTodos()"/></div>
+          <select id="filtro-todos" onchange="renderTodos()">
+            <option value="">Todos</option><option value="pago">Pago</option>
+            <option value="pendente">Pendente</option><option value="atraso">Em atraso</option><option value="plano">Plano</option>
+          </select>
+        </div>
+      </div>
+      <div style="overflow-x:auto"><table>
+        <thead><tr><th>Paciente</th><th>Origem</th><th>Data Sessao</th><th>Data Pgto</th><th>Valor</th><th>Status</th><th>NF</th><th>Acoes</th></tr></thead>
+        <tbody id="tb-todos"></tbody>
+      </table></div>
+    </div>
+  </div>
+</div>
+
+<!-- PACIENTES -->
+<div id="sec-pacientes" class="section">
+  <div class="topbar"><h2>Pacientes</h2><button class="btn btn-primary" onclick="abrirModal()">+ Novo</button></div>
+  <div class="content">
+    <div class="toolbar" style="margin-bottom:14px;">
+      <div class="search-wrap"><span class="search-icon">&#128269;</span><input type="text" id="busca-pac" placeholder="Buscar paciente..." oninput="renderPacientes()"/></div>
+      <select id="ordem-pac" onchange="renderPacientes()">
+        <option value="az">Nome A a Z</option>
+        <option value="za">Nome Z a A</option>
+        <option value="deve">Maior valor pendente</option>
+        <option value="recente">Mais recente</option>
+      </select>
+      <select id="filtro-orig-pac" onchange="renderPacientes()">
+        <option value="">Todas origens</option>
+        <option value="particular">Particular</option>
+        <option value="volare">Volare</option>
+        <option value="amar">Amar</option>
+      </select>
+    </div>
+    <div class="pac-grid" id="pac-grid"></div>
+  </div>
+</div>
+
+<!-- DEMONSTRATIVO -->
+<div id="sec-demonstrativo" class="section">
+  <div class="topbar"><h2>Demonstrativo financeiro</h2></div>
+  <div class="content">
+    <div class="toolbar" style="margin-bottom:16px;">
+      <select id="dem-tipo" onchange="renderDemonstrativo()"><option value="mensal">Mensal</option><option value="anual">Anual</option></select>
+      <select id="dem-mes" onchange="renderDemonstrativo()"></select>
+      <select id="dem-ano" onchange="renderDemonstrativo()"></select>
+      <select id="dem-origem" onchange="renderDemonstrativo()">
+        <option value="">Todas origens</option>
+        <option value="particular">Particular</option>
+        <option value="volare">Volare</option>
+        <option value="amar">Amar</option>
+      </select>
+      <select id="dem-status" onchange="renderDemonstrativo()">
+        <option value="">Todos status</option>
+        <option value="pago">Pago</option>
+        <option value="pendente">Pendente</option>
+        <option value="atraso">Em atraso</option>
+        <option value="plano">Plano</option>
+      </select>
+    </div>
+    <div id="dem-content"></div>
+  </div>
+</div>
+
+<!-- PARTICULAR -->
+<div id="sec-particular" class="section">
+  <div class="topbar"><h2>Pacientes particulares</h2><button class="btn btn-primary" onclick="abrirModal('particular')">+ Novo</button></div>
+  <div class="content">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Consciense Psicologia Ltda</span>
+        <div class="toolbar">
+          <div class="search-wrap"><span class="search-icon">&#128269;</span><input type="text" id="busca-part" placeholder="Buscar..." oninput="renderParticular()"/></div>
+          <select id="filtro-part" onchange="renderParticular()">
+            <option value="">Todos status</option>
+            <option value="pago">Pago</option>
+            <option value="pendente">Pendente</option>
+            <option value="atraso">Em atraso</option>
+          </select>
+        </div>
+      </div>
+      <div style="overflow-x:auto"><table>
+        <thead><tr><th>Paciente</th><th>Tipo</th><th>Data Sessao</th><th>Data Pgto</th><th>Valor</th><th>Status</th><th>NF</th><th>Acoes</th></tr></thead>
+        <tbody id="tb-part"></tbody>
+      </table></div>
+      <div class="totais-row" id="tot-part"></div>
+    </div>
+  </div>
+</div>
+
+<!-- VOLARE -->
+<div id="sec-volare" class="section">
+  <div class="topbar"><h2>Clinica Volare</h2><button class="btn btn-primary" onclick="abrirModal('volare')">+ Novo</button></div>
+  <div class="content">
+    <div class="alert info"><span>&#128161;</span><span>Aluguel mensal da sala: <strong>R$ 435,00</strong>. Descontado automaticamente no demonstrativo.</span></div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">Plano de saude</span></div>
+      <div style="overflow-x:auto"><table>
+        <thead><tr><th>Paciente</th><th>Convenio</th><th>Duracao</th><th>Data</th><th>Realizadas</th><th>Pagas</th><th>Pendentes</th><th>Prev. Receber</th><th>Guia</th><th>Acoes</th></tr></thead>
+        <tbody id="tb-vol"></tbody>
+      </table></div>
+      <div class="totais-row" id="tot-vol"></div>
+    </div>
+  </div>
+</div>
+
+<!-- AMAR -->
+<div id="sec-amar" class="section">
+  <div class="topbar"><h2>Clinica Amar</h2><button class="btn btn-primary" onclick="abrirModal('amar-ter')">+ Novo</button></div>
+  <div class="content">
+    <div class="alert info"><span>&#128161;</span><span>Divisao 50% - o valor exibido ja e a sua parte.</span></div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">Plano de saude</span></div>
+      <div style="overflow-x:auto"><table>
+        <thead><tr><th>Paciente</th><th>Dia</th><th>Convenio</th><th>Duracao</th><th>Data</th><th>Realizadas</th><th>Pagas</th><th>Pendentes</th><th>Prev. (50%)</th><th>Guia</th><th>Acoes</th></tr></thead>
+        <tbody id="tb-amar"></tbody>
+      </table></div>
+      <div class="totais-row" id="tot-amar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- NF -->
+<div id="sec-nf" class="section">
+  <div class="topbar"><h2>Notas fiscais</h2></div>
+  <div class="content">
+    <div class="alert info"><span>&#128197;</span><span>Emita as notas no ultimo dia util do mes para pacientes particulares que pagaram.</span></div>
+    <div class="tab-row">
+      <button class="tab active" onclick="mudarTabNF('pendente',this)">Pendentes</button>
+      <button class="tab" onclick="mudarTabNF('emitidas',this)">Emitidas</button>
+    </div>
+    <div id="nf-pend-sec"><div class="card" id="card-nf-pend"></div></div>
+    <div id="nf-emit-sec" style="display:none"><div class="card" id="card-nf-emit"></div></div>
+  </div>
+</div>
+
+<!-- ALERTAS -->
+<div id="sec-alertas" class="section">
+  <div class="topbar"><h2>Alertas</h2></div>
+  <div class="content" id="lista-alertas"></div>
+</div>
+
+<!-- FICHA -->
+<div class="overlay" id="ov-ficha">
+  <div class="modal" style="max-width:720px;">
+    <div id="ficha-content"></div>
+    <div style="text-align:right;margin-top:14px;"><button class="btn" onclick="fecharOv('ov-ficha')">Fechar</button></div>
+  </div>
+</div>
+
+<!-- MODAL NF -->
+<div class="overlay" id="ov-nf">
+  <div class="modal" style="max-width:380px;">
+    <h3>Registrar emissao de NF</h3>
+    <div class="form-row"><label>Data de emissao</label><input type="date" id="nf-data-emissao"/></div>
+    <div class="form-row"><label>Numero da NF (opcional)</label><input type="text" id="nf-numero" placeholder="ex: NF-2026-001"/></div>
+    <div class="form-actions">
+      <button class="btn" onclick="fecharOv('ov-nf')">Cancelar</button>
+      <button class="btn btn-primary" onclick="confirmarNF()">Registrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL AGENDAR -->
+<div class="overlay" id="ov-agenda">
+  <div class="modal" style="max-width:460px;">
+    <h3>Agendar sessao</h3>
+    <div class="form-two">
+      <div class="form-row"><label>Data</label><input type="date" id="ag-data"/></div>
+      <div class="form-row"><label>Horario</label>
+        <select id="ag-hora">
+          <option>07:00</option><option>07:30</option><option>08:00</option><option>08:30</option>
+          <option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option>
+          <option>11:00</option><option>11:30</option><option>12:00</option><option>12:30</option>
+          <option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option>
+          <option>15:00</option><option>15:30</option><option>16:00</option><option>16:30</option>
+          <option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option>
+          <option>19:00</option><option>19:30</option><option>20:00</option>
+        </select>
       </div>
     </div>
+    <div class="form-row"><label>Paciente</label>
+      <select id="ag-paciente" onchange="agPreencherOrigem()">
+        <option value="__novo__">+ Novo paciente</option>
+      </select>
+    </div>
+    <div id="ag-novo-wrap" style="display:none">
+      <div class="form-row"><label>Nome do novo paciente</label><input type="text" id="ag-novo-nome" placeholder="Nome completo"/></div>
+    </div>
+    <div class="form-row"><label>Origem</label>
+      <select id="ag-origem" onchange="agAtualizarCampos()">
+        <option value="particular">Particular</option>
+        <option value="volare">Clinica Volare</option>
+        <option value="amar-ter">Clinica Amar - terca</option>
+        <option value="amar-qua">Clinica Amar - quarta</option>
+        <option value="amar-qui">Clinica Amar - quinta</option>
+      </select>
+    </div>
+    <div id="ag-part-campos">
+      <div class="form-two">
+        <div class="form-row"><label>Tipo</label>
+          <select id="ag-tipo"><option value="individual">Individual</option><option value="plano4">Plano 4 sessoes</option></select>
+        </div>
+        <div class="form-row"><label>Valor R$</label><input type="number" id="ag-valor" placeholder="0,00" step="0.01"/></div>
+      </div>
+    </div>
+    <div id="ag-plano-campos" style="display:none">
+      <div class="form-two">
+        <div class="form-row"><label>Convenio</label><select id="ag-convenio" onchange="agAutoValor()"></select></div>
+        <div class="form-row"><label>Duracao</label>
+          <select id="ag-duracao" onchange="agAutoValor()"><option value="20">20 min</option><option value="40">40 min</option></select>
+        </div>
+      </div>
+      <div class="form-row"><label>Valor por sessao</label><input type="number" id="ag-valor-plano" step="0.01" placeholder="Auto"/></div>
+    </div>
+    <div class="form-row"><label>Observacao</label><input type="text" id="ag-obs" placeholder="Opcional"/></div>
+    <div class="sep"></div>
+    <div class="alert info" style="margin-bottom:0;font-size:12px;"><span>i</span><span>A sessao ficara como Agendada. Voce confirma o registro financeiro depois.</span></div>
+    <div class="form-actions">
+      <button class="btn" onclick="fecharOv('ov-agenda')">Cancelar</button>
+      <button class="btn btn-primary" onclick="salvarAgendamento()">Agendar</button>
+    </div>
   </div>
+</div>
 
-  <!-- PACIENTES -->
-  <div id="sec-pacientes" class="section">
-    <div class="topbar"><h2>Pacientes</h2></div>
-    <div class="content" id="pacientes-content"></div>
+<!-- MODAL CONFIRMAR -->
+<div class="overlay" id="ov-confirmar">
+  <div class="modal" style="max-width:420px;">
+    <h3>Confirmar registro financeiro</h3>
+    <div id="conf-resumo" style="background:var(--surface2);border-radius:var(--rs);padding:14px;margin-bottom:16px;font-size:13px;line-height:1.8;"></div>
+    <div class="form-two">
+      <div class="form-row"><label>Status pagamento</label>
+        <select id="conf-status"><option value="pendente">Pendente</option><option value="pago">Pago</option></select>
+      </div>
+      <div class="form-row"><label>Data pagamento</label><input type="date" id="conf-datapgto"/></div>
+    </div>
+    <div class="form-row"><label>Forma de pagamento</label>
+      <select id="conf-forma"><option>PIX</option><option>Dinheiro</option><option>Cartao</option><option>TED</option></select>
+    </div>
+    <div class="form-actions">
+      <button class="btn" onclick="fecharOv('ov-confirmar')">Cancelar</button>
+      <button class="btn btn-primary" onclick="confirmarRegistro()">Registrar no financeiro</button>
+    </div>
   </div>
+</div>
+
+<!-- MODAL NOVO/EDITAR -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h3 id="modal-titulo">Novo registro</h3>
+    <div class="form-two">
+      <div class="form-row"><label>Paciente *</label><input id="f-nome" type="text" placeholder="Nome completo"/></div>
+      <div class="form-row"><label>Origem *</label>
+        <select id="f-origem" onchange="atualizarCampos()">
+          <option value="particular">Particular</option>
+          <option value="volare">Clinica Volare</option>
+          <option value="amar-ter">Clinica Amar - terca</option>
+          <option value="amar-qua">Clinica Amar - quarta</option>
+          <option value="amar-qui">Clinica Amar - quinta</option>
+        </select>
+      </div>
+    </div>
+    <div id="campos-particular">
+      <div class="form-two">
+        <div class="form-row"><label>Tipo/Plano</label>
+          <select id="f-tipo-part"><option value="individual">Individual</option><option value="plano4">Plano 4 sessoes</option></select>
+        </div>
+        <div class="form-row"><label>Valor R$ *</label><input id="f-valor" type="number" placeholder="0,00" step="0.01"/></div>
+      </div>
+      <div class="form-two">
+        <div class="form-row"><label>Data da sessao *</label><input id="f-data" type="date"/></div>
+        <div class="form-row"><label>Data do pagamento</label><input id="f-data-pgto" type="date"/></div>
+      </div>
+      <div class="form-two">
+        <div class="form-row"><label>Status pagamento</label>
+          <select id="f-status"><option value="pendente">Pendente</option><option value="pago">Pago</option><option value="atraso">Em atraso</option></select>
+        </div>
+        <div class="form-row"><label>Forma de pagamento</label>
+          <select id="f-forma"><option>PIX</option><option>Dinheiro</option><option>Cartao</option><option>TED</option></select>
+        </div>
+      </div>
+    </div>
+    <div id="campos-plano" style="display:none">
+      <div class="form-two">
+        <div class="form-row"><label>Convenio *</label><select id="f-convenio" onchange="autoValor()"></select></div>
+        <div class="form-row"><label>Duracao</label>
+          <select id="f-duracao" onchange="autoValor()"><option value="20">20 minutos</option><option value="40">40 minutos</option></select>
+        </div>
+      </div>
+      <div class="form-row"><label>Valor por sessao (auto)</label><input id="f-valor-plano" type="number" step="0.01" placeholder="Preenchido automaticamente"/></div>
+      <div class="form-two">
+        <div class="form-row"><label>Data da sessao *</label><input id="f-data-plano" type="date"/></div>
+        <div class="form-row"><label>No. Guia / Auth</label><input id="f-guia" type="text" placeholder="Numero da guia"/></div>
+      </div>
+      <div class="form-two">
+        <div class="form-row"><label>Sessoes realizadas</label><input id="f-sessoes" type="number" placeholder="0" min="0"/></div>
+        <div class="form-row"><label>Sessoes ja pagas</label><input id="f-pagas" type="number" placeholder="0" min="0"/></div>
+      </div>
+    </div>
+    <div class="form-row"><label>Observacao</label><input id="f-obs" type="text" placeholder="Opcional"/></div>
+    <div class="form-actions">
+      <button class="btn" onclick="fecharModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="salvar()">Salvar</button>
+    </div>
+  </div>
+</div>
+
 </main>
-
 <script>
-const API_URL = window.location.hostname === 'localhost'
-  ? 'http://localhost:5000/api'
-  : `${window.location.origin}/api`;
+var CONVENIOS={
+  amar:{
+    "Bradesco":{20:46.83,40:93.66},
+    "Medservice":{20:46.83,40:93.66},
+    "CASSI":{20:30,40:60},
+    "Amil":{20:35,40:70},
+    "Saude Caixa":{20:33.12,40:66.24},
+    "FUSEX":{20:27.14,40:54.28},
+    "FUSMAN":{20:39,40:78},
+    "Petrobras":{20:28.58,40:57.16},
+    "Convenio geral":{20:35,40:70}
+  },
+  volare:{
+    "Bradesco":{20:41.33,40:82.66},
+    "Saude Caixa":{20:59.17,40:118.34},
+    "Pro Social":{20:101.47,40:202.94}
+  }
+};
+var VOLARE_ALUGUEL=435;
+var HORAS=["07:00","07:30","08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00"];
 
-// ═══════════════════════════════════════════════════════════════
-// REQUISIÇÕES API
-// ═══════════════════════════════════════════════════════════════
+var DADOS_INICIAIS = [{"id": 1, "nome": "ANDRE", "origem": "particular", "tipopart": "individual", "data": "2026-05-15", "datapgto": "", "valor": 0, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 2, "nome": "CAHIO", "origem": "particular", "tipopart": "individual", "data": "2026-05-15", "datapgto": "", "valor": 0, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 3, "nome": "CAROL", "origem": "particular", "tipopart": "individual", "data": "2026-04-06", "datapgto": "", "valor": 100, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "Cartão", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 4, "nome": "CAROL", "origem": "particular", "tipopart": "individual", "data": "2026-04-13", "datapgto": "", "valor": 100, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "Cartão", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 5, "nome": "CAROL", "origem": "particular", "tipopart": "individual", "data": "2026-04-20", "datapgto": "", "valor": 100, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "Cartão", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 6, "nome": "CAROL", "origem": "particular", "tipopart": "individual", "data": "2026-04-27", "datapgto": "", "valor": 100, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "Cartão", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 7, "nome": "CAROL", "origem": "particular", "tipopart": "individual", "data": "2026-05-04", "datapgto": "", "valor": 100, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "Cartão", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 8, "nome": "CAROL", "origem": "particular", "tipopart": "individual", "data": "2026-05-11", "datapgto": "", "valor": 100, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "Cartão", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 9, "nome": "CLARISSE", "origem": "particular", "tipopart": "individual", "data": "2026-05-15", "datapgto": "", "valor": 0, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 10, "nome": "DANIELA", "origem": "particular", "tipopart": "individual", "data": "2026-05-08", "datapgto": "2026-05-08", "valor": 150, "status": "pago", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 11, "nome": "EDSON", "origem": "particular", "tipopart": "individual", "data": "2026-05-15", "datapgto": "", "valor": 0, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 12, "nome": "FELIPE DR BRUNO", "origem": "particular", "tipopart": "individual", "data": "2026-05-15", "datapgto": "", "valor": 0, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 13, "nome": "FRANCES", "origem": "particular", "tipopart": "individual", "data": "2026-05-15", "datapgto": "", "valor": 0, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 14, "nome": "GISELE DR BRUNO", "origem": "particular", "tipopart": "individual", "data": "2026-05-15", "datapgto": "", "valor": 0, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 15, "nome": "GUILHERME", "origem": "particular", "tipopart": "individual", "data": "2026-05-15", "datapgto": "", "valor": 0, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 16, "nome": "LAILA", "origem": "particular", "tipopart": "individual", "data": "2026-05-15", "datapgto": "", "valor": 0, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 17, "nome": "LARA", "origem": "particular", "tipopart": "individual", "data": "2026-05-15", "datapgto": "", "valor": 0, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 18, "nome": "LIS", "origem": "particular", "tipopart": "individual", "data": "2026-05-15", "datapgto": "", "valor": 0, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 19, "nome": "MARILIA", "origem": "particular", "tipopart": "individual", "data": "2026-05-15", "datapgto": "", "valor": 0, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 20, "nome": "PIT", "origem": "particular", "tipopart": "individual", "data": "2026-05-15", "datapgto": "", "valor": 0, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 21, "nome": "RODNEY", "origem": "particular", "tipopart": "individual", "data": "2026-05-15", "datapgto": "", "valor": 0, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 22, "nome": "RODRIGO", "origem": "particular", "tipopart": "individual", "data": "2026-05-15", "datapgto": "", "valor": 0, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 23, "nome": "RUDY", "origem": "particular", "tipopart": "individual", "data": "2026-05-01", "datapgto": "", "valor": 100, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 24, "nome": "RUDY", "origem": "particular", "tipopart": "individual", "data": "2026-05-12", "datapgto": "", "valor": 100, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 25, "nome": "THARITA", "origem": "particular", "tipopart": "individual", "data": "2026-05-15", "datapgto": "", "valor": 0, "status": "pendente", "nf": false, "nfdata": "", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 26, "nome": "VANE PORTUGAL", "origem": "particular", "tipopart": "individual", "data": "2026-04-30", "datapgto": "2026-04-30", "valor": 150, "status": "pago", "nf": true, "nfdata": "2026-04-30", "nfnum": "", "forma": "PIX", "convenio": "", "duracao": "", "valorunit": 0, "guia": "", "sessoes": 0, "pagas": 0, "obs": ""}, {"id": 27, "nome": "CLARA", "origem": "volare", "tipopart": "", "data": "2026-05-14", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 28, "nome": "CLARA", "origem": "volare", "tipopart": "", "data": "2026-05-07", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 29, "nome": "CLARA", "origem": "volare", "tipopart": "", "data": "2026-04-30", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 30, "nome": "EDNA", "origem": "volare", "tipopart": "", "data": "2026-05-11", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 31, "nome": "EDNA", "origem": "volare", "tipopart": "", "data": "2026-05-04", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 32, "nome": "EDNA", "origem": "volare", "tipopart": "", "data": "2026-04-27", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 33, "nome": "FABIO", "origem": "volare", "tipopart": "", "data": "2026-05-14", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 34, "nome": "FABIO", "origem": "volare", "tipopart": "", "data": "2026-05-07", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 35, "nome": "FABIO", "origem": "volare", "tipopart": "", "data": "2026-04-30", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 36, "nome": "LINDOLFO", "origem": "volare", "tipopart": "", "data": "2026-05-13", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 37, "nome": "LINDOLFO", "origem": "volare", "tipopart": "", "data": "2026-05-06", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 38, "nome": "LINDOLFO", "origem": "volare", "tipopart": "", "data": "2026-04-29", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 39, "nome": "MATEO", "origem": "volare", "tipopart": "", "data": "2026-05-14", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 40, "nome": "MATEO", "origem": "volare", "tipopart": "", "data": "2026-05-06", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 41, "nome": "MATEO", "origem": "volare", "tipopart": "", "data": "2026-04-29", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 42, "nome": "PATRICIA", "origem": "volare", "tipopart": "", "data": "2026-05-11", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 43, "nome": "PATRICIA", "origem": "volare", "tipopart": "", "data": "2026-05-04", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 44, "nome": "PATRICIA", "origem": "volare", "tipopart": "", "data": "2026-04-27", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 45, "nome": "ROSILANE", "origem": "volare", "tipopart": "", "data": "2026-05-13", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 46, "nome": "ROSILANE", "origem": "volare", "tipopart": "", "data": "2026-05-06", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 47, "nome": "ROSILANE", "origem": "volare", "tipopart": "", "data": "2026-04-29", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 48, "nome": "SILVANIA", "origem": "volare", "tipopart": "", "data": "2026-05-11", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 49, "nome": "SILVANIA", "origem": "volare", "tipopart": "", "data": "2026-05-04", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}, {"id": 50, "nome": "SILVANIA", "origem": "volare", "tipopart": "", "data": "2026-04-27", "datapgto": "", "valor": 0, "status": "plano", "nf": false, "nfdata": "", "nfnum": "", "forma": "", "convenio": "", "duracao": "20", "valorunit": 0, "guia": "", "sessoes": 2, "pagas": 0, "obs": "⚠ Informe o convênio e duração para calcular valor"}];
+var dados = JSON.parse(localStorage.getItem("rosa_v5") || "null") || DADOS_INICIAIS;
+var agendamentos = [];
+var editId = null;
+var nfEditId = null;
+var confirmarAgId = null;
+var semanaOffset = 0;
 
-async function fetch_api(endpoint, options = {}) {
-  try {
-    const response = await fetch(`${API_URL}${endpoint}`, {
-      headers: {'Content-Type': 'application/json'},
-      ...options
-    });
-    const data = await response.json();
-    if (!response.ok) {
-      console.error(`Erro ${response.status}:`, data);
-      return null;
+// Carregar agendamentos da API ao iniciar
+async function carregarAgendamentos(){
+  try{
+    var response=await fetch("/api/agendamentos");
+    var json=await response.json();
+    if(json.success&&json.data){
+      agendamentos=json.data.map(function(a){
+        return{
+          id:a.id,
+          nome:a.nome,
+          origem:a.origem,
+          data:a.data,
+          hora:a.hora,
+          tipopart:a.tipo||"individual",
+          valor:a.valor||0,
+          convenio:"",
+          duracao:"",
+          valorunit:0,
+          obs:a.observacao||"",
+          confirmado:a.confirmado||false
+        };
+      });
     }
-    return data;
-  } catch (error) {
-    console.error(`Erro na requisição ${endpoint}:`, error);
-    return null;
+  }catch(e){
+    console.error("Erro ao carregar agendamentos:",e);
   }
 }
 
-async function carregarStats() {
-  const result = await fetch_api('/stats');
-  if (!result) {
-    document.getElementById('stats').innerHTML = '<div class="alert info">Erro ao carregar estatísticas</div>';
-    return;
-  }
+function salvarLS(){try{localStorage.setItem("rosa_v5",JSON.stringify(dados));}catch(e){}}
+function salvarAgenda(){try{localStorage.setItem("rosa_agenda",JSON.stringify(agendamentos));}catch(e){}}
+function fmt(v){return "R$ "+Number(v||0).toLocaleString("pt-BR",{minimumFractionDigits:2});}
+function fmtD(d){if(!d)return"--";var p=d.split("-");return p[2]+"/"+p[1]+"/"+p[0];}
+function fmtISO(d){return d.toISOString().slice(0,10);}
+function origemLabel(o){var m={particular:"Particular",volare:"Volare","amar-ter":"Amar-ter","amar-qua":"Amar-qua","amar-qui":"Amar-qui"};return m[o]||o;}
+function diaLabel(o){var m={"amar-ter":"Terca","amar-qua":"Quarta","amar-qui":"Quinta"};return m[o]||"";}
+function isAmar(o){return o&&o.indexOf("amar")===0;}
+function bSt(s){var m={pago:"b-pago",pendente:"b-pendente",atraso:"b-atraso",plano:"b-plano"};var l={pago:"Pago",pendente:"Pendente",atraso:"Em atraso",plano:"Plano"};return "<span class=\"badge "+( m[s]||"")+"\">"+( l[s]||s)+"</span>";}
+function acoes(id){return "<button class=\"icon-btn\" onclick=\"editar("+id+")\" title=\"Editar\">&#9998;</button> <button class=\"icon-btn\" onclick=\"excluir("+id+")\" title=\"Excluir\">&#10005;</button>";}
+function esc(s){return (s||"").replace(/\\/g,"\\\\").replace(/'/g,"\\'");}
+function fecharOv(id){document.getElementById(id).classList.remove("open");}
+function valorPlano(d){var pend=(d.sessoes||0)-(d.pagas||0);var unit=d.valorunit||0;if(isAmar(d.origem))return{recebido:(d.pagas||0)*unit*0.5,pendente:pend*unit*0.5};return{recebido:(d.pagas||0)*unit,pendente:pend*unit};}
 
-  const { total_pacientes, total_sessoes, total_recebido, total_pendente, nfs_pendentes } = result.data;
-
-  document.getElementById('stats').innerHTML = `
-    <div class="stat">
-      <div class="stat-label">Pacientes</div>
-      <div class="stat-val">${total_pacientes}</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">Sessões</div>
-      <div class="stat-val">${total_sessoes}</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">Recebido</div>
-      <div class="stat-val" style="color:var(--green)">R$ ${total_recebido?.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">A Receber</div>
-      <div class="stat-val" style="color:var(--amber)">R$ ${total_pendente?.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">NF Pendentes</div>
-      <div class="stat-val" style="color:var(--red)">${nfs_pendentes}</div>
-    </div>
-  `;
-}
-
-async function carregarPacientes() {
-  document.getElementById('pacientes-content').innerHTML = '<div class="loading"><div class="spinner"></div> Carregando...</div>';
-
-  const result = await fetch_api('/pacientes');
-  if (!result) {
-    document.getElementById('pacientes-content').innerHTML = '<div class="alert info">Erro ao carregar pacientes</div>';
-    return;
-  }
-
-  const pacientes = result.data;
-
-  if (pacientes.length === 0) {
-    document.getElementById('pacientes-content').innerHTML = '<div class="alert info">Nenhum paciente cadastrado</div>';
-    return;
-  }
-
-  let html = '<div class="card"><div class="card-header"><span class="card-title">Pacientes Cadastrados</span></div>';
-  html += '<table style="width:100%;border-collapse:collapse;font-size:13px;">';
-  html += '<thead><tr style="background:var(--surface2);"><th style="padding:10px;text-align:left;">Nome</th><th style="padding:10px;text-align:left;">Email</th><th style="padding:10px;text-align:left;">Telefone</th></tr></thead>';
-  html += '<tbody>';
-
-  pacientes.forEach(p => {
-    html += `<tr style="border-bottom:1px solid var(--border);">
-      <td style="padding:10px;"><b>${p.nome}</b></td>
-      <td style="padding:10px;">${p.email || '--'}</td>
-      <td style="padding:10px;">${p.telefone || '--'}</td>
-    </tr>`;
+function getPacientes(){
+  var mapa={};
+  dados.forEach(function(d){
+    var k=d.nome.trim().toLowerCase();
+    if(!mapa[k])mapa[k]={nome:d.nome,registros:[],origens:[]};
+    mapa[k].registros.push(d);
+    if(mapa[k].origens.indexOf(d.origem)<0)mapa[k].origens.push(d.origem);
   });
-
-  html += '</tbody></table></div>';
-  document.getElementById('pacientes-content').innerHTML = html;
+  return Object.values(mapa).map(function(p){
+    var part=p.registros.filter(function(r){return r.origem==="particular";});
+    var totalPago=part.filter(function(r){return r.status==="pago";}).reduce(function(a,b){return a+(b.valor||0);},0);
+    var totalPend=part.filter(function(r){return r.status==="pendente"||r.status==="atraso";}).reduce(function(a,b){return a+(b.valor||0);},0);
+    var prevPlano=0,recPlano=0;
+    p.registros.filter(function(r){return r.origem!=="particular";}).forEach(function(r){var vp=valorPlano(r);prevPlano+=vp.pendente;recPlano+=vp.recebido;});
+    var sessPend=p.registros.filter(function(r){return r.origem!=="particular";}).reduce(function(a,b){return a+((b.sessoes||0)-(b.pagas||0));},0);
+    var ultima=p.registros.map(function(r){return r.data||"";}).sort().reverse()[0];
+    return {nome:p.nome,registros:p.registros,origens:p.origens,totalPago:totalPago,totalPend:totalPend,prevPlano:prevPlano,recPlano:recPlano,sessPend:sessPend,ultima:ultima,deve:totalPend};
+  });
 }
 
-function ir(aba) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-
-  const sec = document.getElementById(`sec-${aba}`);
-  if (sec) sec.classList.add('active');
-
-  const navEl = document.querySelector(`.nav-item[data-aba="${aba}"]`);
-  if (navEl) navEl.classList.add('active');
-
-  if (aba === 'dashboard') carregarStats();
-  if (aba === 'pacientes') carregarPacientes();
+function renderStats(){
+  var part=dados.filter(function(d){return d.origem==="particular";});
+  var pago=part.filter(function(d){return d.status==="pago";}).reduce(function(a,b){return a+(b.valor||0);},0);
+  var pend=part.filter(function(d){return d.status==="pendente";}).reduce(function(a,b){return a+(b.valor||0);},0);
+  var atr=part.filter(function(d){return d.status==="atraso";}).reduce(function(a,b){return a+(b.valor||0);},0);
+  var prevPlano=0;
+  dados.filter(function(d){return d.origem!=="particular";}).forEach(function(d){prevPlano+=valorPlano(d).pendente;});
+  var nfP=part.filter(function(d){return d.status==="pago"&&!d.nf;}).length;
+  var pacs=getPacientes().length;
+  document.getElementById("stats").innerHTML="<div class=\"stat\"><div class=\"stat-label\">Recebido</div><div class=\"stat-val verde\">"+fmt(pago)+"</div><div class=\"stat-sub\">particular</div></div>"
+    +"<div class=\"stat\"><div class=\"stat-label\">A receber</div><div class=\"stat-val amarelo\">"+fmt(pend+atr)+"</div><div class=\"stat-sub\">particular</div></div>"
+    +"<div class=\"stat\"><div class=\"stat-label\">Prev. planos</div><div class=\"stat-val roxo\">"+fmt(prevPlano)+"</div><div class=\"stat-sub\">clinicas a repassar</div></div>"
+    +"<div class=\"stat\"><div class=\"stat-label\">Notas a emitir</div><div class=\"stat-val "+(nfP>0?"amarelo":"verde")+"\">"+nfP+"</div><div class=\"stat-sub\">particular</div></div>"
+    +"<div class=\"stat\"><div class=\"stat-label\">Pacientes</div><div class=\"stat-val roxo\">"+pacs+"</div><div class=\"stat-sub\">cadastrados</div></div>";
+  document.getElementById("b-pac").textContent=pacs;
+  document.getElementById("b-part").textContent=dados.filter(function(d){return d.origem==="particular";}).length;
+  document.getElementById("b-vol").textContent=dados.filter(function(d){return d.origem==="volare";}).length;
+  document.getElementById("b-amar").textContent=dados.filter(function(d){return isAmar(d.origem);}).length;
+  document.getElementById("b-nf").style.display=nfP>0?"":"none";
+  var temAlerta=nfP>0||atr>0||dados.some(function(d){return d.origem!=="particular"&&((d.sessoes||0)-(d.pagas||0))>0;});
+  document.getElementById("b-alert").style.display=temAlerta?"":"none";
 }
 
-// ═══════════════════════════════════════════════════════════════
-// INICIALIZAÇÃO
-// ═══════════════════════════════════════════════════════════════
+function renderTodos(){
+  var busca=(document.getElementById("busca-todos")||{value:""}).value.toLowerCase();
+  var filtro=(document.getElementById("filtro-todos")||{value:""}).value;
+  var lista=dados.filter(function(d){
+    if(busca&&d.nome.toLowerCase().indexOf(busca)<0)return false;
+    if(filtro){if(d.origem==="particular"){if(d.status!==filtro)return false;}else{if(filtro!=="plano")return false;}}
+    return true;
+  }).sort(function(a,b){return a.nome.localeCompare(b.nome,"pt-BR");});
+  var tb=document.getElementById("tb-todos");if(!tb)return;
+  if(!lista.length){tb.innerHTML="<tr><td colspan=\"8\" class=\"empty\">Nenhum resultado</td></tr>";return;}
+  var html="";
+  lista.forEach(function(d){
+    var isP=d.origem==="particular";
+    html+="<tr><td><b style=\"cursor:pointer;color:var(--accent)\" onclick=\"abrirFicha(\'"+esc(d.nome)+"\')\"><u>"+d.nome+"</u></b></td>"
+      +"<td>"+origemLabel(d.origem)+"</td>"
+      +"<td>"+fmtD(d.data)+"</td>"
+      +"<td>"+(isP?fmtD(d.datapgto):"--")+"</td>"
+      +"<td>"+(isP?fmt(d.valor||0):fmt((d.valorunit||0)*(d.sessoes||0)))+"</td>"
+      +"<td>"+(isP?bSt(d.status):"<span class=\"badge b-plano\">Plano</span>")+"</td>"
+      +"<td>"+(isP?(d.nf?"<span class=\"badge b-nf-ok\">OK "+fmtD(d.nfdata)+"</span>":"<span class=\"badge b-nf-pend\">Pendente</span>"):"--")+"</td>"
+      +"<td>"+acoes(d.id)+"</td></tr>";
+  });
+  tb.innerHTML=html;
+}
 
-window.addEventListener('load', () => {
-  console.log('🚀 Aplicação iniciada');
-  carregarStats();
+function renderPacientes(){
+  var busca=(document.getElementById("busca-pac")||{value:""}).value.toLowerCase();
+  var ordem=(document.getElementById("ordem-pac")||{value:"az"}).value;
+  var orig=(document.getElementById("filtro-orig-pac")||{value:""}).value;
+  var lista=getPacientes().filter(function(p){
+    if(busca&&p.nome.toLowerCase().indexOf(busca)<0)return false;
+    if(orig){var has=p.origens.some(function(o){return orig==="amar"?isAmar(o):o===orig;});if(!has)return false;}
+    return true;
+  });
+  if(ordem==="az")lista.sort(function(a,b){return a.nome.localeCompare(b.nome,"pt-BR");});
+  else if(ordem==="za")lista.sort(function(a,b){return b.nome.localeCompare(a.nome,"pt-BR");});
+  else if(ordem==="deve")lista.sort(function(a,b){return b.deve-a.deve;});
+  else lista.sort(function(a,b){return (b.ultima||"").localeCompare(a.ultima||"");});
+  var grid=document.getElementById("pac-grid");if(!grid)return;
+  if(!lista.length){grid.innerHTML="<div class=\"empty\" style=\"grid-column:1/-1\">Nenhum paciente encontrado</div>";return;}
+  var html="";
+  lista.forEach(function(p){
+    var valorRec=p.totalPago+p.recPlano;
+    var valorPend=p.totalPend+p.prevPlano;
+    var badge="";
+    if(p.deve>0)badge="<span class=\"badge b-atraso\">Deve "+fmt(p.deve)+"</span>";
+    else if(p.prevPlano>0)badge="<span class=\"badge b-pendente\">Prev. "+fmt(p.prevPlano)+"</span>";
+    else if(p.sessPend>0)badge="<span class=\"badge b-pendente\">"+p.sessPend+" sessao(oes)</span>";
+    else badge="<span class=\"badge b-ok\">Em dia</span>";
+    var origLabels=[...new Set(p.origens.map(function(o){return origemLabel(o);}))].join(" - ");
+    html+="<div class=\"pac-card\" onclick=\"abrirFicha(\'"+esc(p.nome)+"\')\"><div class=\"pac-top\"><div class=\"pac-nome\">"+p.nome+"</div><div class=\"pac-orig\">"+origLabels+" - "+p.registros.length+" reg.</div></div>"
+      +"<div class=\"pac-body\"><div>"+badge+"</div><div style=\"text-align:right\">"
+      +(valorRec>0?"<div style=\"font-size:13px;font-weight:500;color:var(--green)\">"+fmt(valorRec)+"</div><div style=\"font-size:11px;color:var(--text3)\">recebido</div>":"")
+      +(valorPend>0?"<div style=\"font-size:13px;font-weight:500;color:var(--amber)\">"+fmt(valorPend)+"</div><div style=\"font-size:11px;color:var(--text3)\">a receber</div>":"")
+      +"</div></div></div>";
+  });
+  grid.innerHTML=html;
+}
+
+function abrirFicha(nome){
+  var regs=dados.filter(function(d){return d.nome.trim().toLowerCase()===nome.trim().toLowerCase();}).sort(function(a,b){return (b.data||"").localeCompare(a.data||"");});
+  if(!regs.length)return;
+  var part=regs.filter(function(r){return r.origem==="particular";});
+  var totalPago=part.filter(function(r){return r.status==="pago";}).reduce(function(a,b){return a+(b.valor||0);},0);
+  var totalPend=part.filter(function(r){return r.status==="pendente"||r.status==="atraso";}).reduce(function(a,b){return a+(b.valor||0);},0);
+  var prevPlano=0;
+  regs.filter(function(r){return r.origem!=="particular";}).forEach(function(r){prevPlano+=valorPlano(r).pendente;});
+  var linhas="";
+  regs.forEach(function(d){
+    var isP=d.origem==="particular";
+    if(isP){
+      var nfBtn=d.status==="pago"&&!d.nf?"<button class=\"btn btn-sm\" onclick=\"abrirModalNF("+d.id+")\" style=\"margin-left:4px\">Emitir NF</button>":"";
+      var nfInfo=d.nf?"<span class=\"badge b-nf-ok\">OK "+fmtD(d.nfdata)+(d.nfnum?" - "+d.nfnum:"")+"</span>":"<span class=\"badge b-nf-pend\">Pendente</span>";
+      linhas+="<tr><td>"+fmtD(d.data)+"</td><td>"+fmtD(d.datapgto)+"</td><td>"+origemLabel(d.origem)+"</td><td>"+(d.tipopart==="plano4"?"Plano 4":"Individual")+"</td><td>"+fmt(d.valor||0)+"</td><td>"+bSt(d.status)+"</td><td>"+nfInfo+nfBtn+"</td><td>"+acoes(d.id)+"</td></tr>";
+    }else{
+      var pend=(d.sessoes||0)-(d.pagas||0);
+      var vp=valorPlano(d);
+      linhas+="<tr><td>"+fmtD(d.data)+"</td><td>--</td><td>"+origemLabel(d.origem)+"</td><td>"+(d.convenio||"--")+" "+(d.duracao||"")+"min</td><td>"+fmt((d.valorunit||0)*(d.sessoes||0))+"</td><td><span class=\"badge b-plano\">Plano</span></td><td>"+(pend>0?"<span style=\"color:var(--red);font-weight:500\">"+pend+" pend.</span>":"<span style=\"color:var(--green)\">Ok</span>")+"</td><td>"+acoes(d.id)+"</td></tr>";
+    }
+  });
+  var headerHtml="<div style=\"background:var(--accent);color:#fff;border-radius:var(--r) var(--r) 0 0;padding:16px 18px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin:-24px -24px 16px;\">"
+    +"<div><div style=\"font-family:DM Serif Display,serif;font-size:19px;margin-bottom:2px\">"+regs[0].nome+"</div>"
+    +"<div style=\"font-size:11px;opacity:.65\">"+(new Set(regs.map(function(r){return origemLabel(r.origem);})).size+" origens - "+regs.length+" registros")+"</div></div>"
+    +"<div style=\"display:flex;gap:16px;flex-wrap:wrap;text-align:right\">"
+    +(totalPago>0?"<div><div style=\"font-size:16px;font-weight:500\">"+fmt(totalPago)+"</div><div style=\"font-size:10px;opacity:.65\">recebido</div></div>":"")
+    +(totalPend>0?"<div><div style=\"font-size:16px;font-weight:500;color:#FFCDD2\">"+fmt(totalPend)+"</div><div style=\"font-size:10px;opacity:.65\">a receber</div></div>":"")
+    +(prevPlano>0?"<div><div style=\"font-size:16px;font-weight:500;color:#FFE082\">"+fmt(prevPlano)+"</div><div style=\"font-size:10px;opacity:.65\">plano pend.</div></div>":"")
+    +"</div></div>";
+  document.getElementById("ficha-content").innerHTML=headerHtml
+    +"<div style=\"overflow-x:auto\"><table><thead><tr><th>Data Sessao</th><th>Data Pgto</th><th>Origem</th><th>Tipo</th><th>Valor</th><th>Status</th><th>NF</th><th>Acoes</th></tr></thead><tbody>"+linhas+"</tbody></table></div>"
+    +(totalPend>0?"<div class=\"alert danger\" style=\"margin-top:12px\">Total a receber: <strong>"+fmt(totalPend)+"</strong></div>":"")
+    +"<div style=\"margin-top:10px\"><button class=\"btn btn-primary btn-sm\" onclick=\"novoParaPaciente(\'"+esc(regs[0].nome)+"\')\">+ Adicionar sessao</button></div>";
+  document.getElementById("ov-ficha").classList.add("open");
+}
+
+function renderParticular(){
+  var busca=(document.getElementById("busca-part")||{value:""}).value.toLowerCase();
+  var filtro=(document.getElementById("filtro-part")||{value:""}).value;
+  var lista=dados.filter(function(d){
+    if(d.origem!=="particular")return false;
+    if(busca&&d.nome.toLowerCase().indexOf(busca)<0)return false;
+    if(filtro&&d.status!==filtro)return false;
+    return true;
+  }).sort(function(a,b){return a.nome.localeCompare(b.nome,"pt-BR");});
+  var tb=document.getElementById("tb-part");if(!tb)return;
+  if(!lista.length){tb.innerHTML="<tr><td colspan=\"8\" class=\"empty\">Sem registros</td></tr>";return;}
+  var html="";
+  lista.forEach(function(d){
+    html+="<tr><td><b style=\"cursor:pointer;color:var(--accent)\" onclick=\"abrirFicha(\'"+esc(d.nome)+"\')\"><u>"+d.nome+"</u></b></td>"
+      +"<td>"+(d.tipopart==="plano4"?"Plano 4":"Individual")+"</td>"
+      +"<td>"+fmtD(d.data)+"</td><td>"+fmtD(d.datapgto)+"</td><td>"+fmt(d.valor||0)+"</td>"
+      +"<td>"+bSt(d.status)+"</td>"
+      +"<td>"+(d.nf?"<span class=\"badge b-nf-ok\" title=\""+( d.nfnum||"")+"\">OK "+fmtD(d.nfdata)+"</span>":"<span class=\"badge b-nf-pend\">Pendente</span>"+(d.status==="pago"?" <button class=\"icon-btn\" onclick=\"abrirModalNF("+d.id+")\" title=\"Registrar NF\">&#128221;</button>":""))+"</td>"
+      +"<td>"+acoes(d.id)+"</td></tr>";
+  });
+  tb.innerHTML=html;
+  var pago=lista.filter(function(d){return d.status==="pago";}).reduce(function(a,b){return a+(b.valor||0);},0);
+  var pend=lista.filter(function(d){return d.status==="pendente";}).reduce(function(a,b){return a+(b.valor||0);},0);
+  var atr=lista.filter(function(d){return d.status==="atraso";}).reduce(function(a,b){return a+(b.valor||0);},0);
+  document.getElementById("tot-part").innerHTML="<span class=\"total-item\">Pago: <strong class=\"verde\">"+fmt(pago)+"</strong></span><span class=\"total-item\">Pendente: <strong class=\"amarelo\">"+fmt(pend)+"</strong></span><span class=\"total-item\">Em atraso: <strong class=\"vermelho\">"+fmt(atr)+"</strong></span>";
+}
+
+function renderVolare(){
+  var lista=dados.filter(function(d){return d.origem==="volare";}).sort(function(a,b){return a.nome.localeCompare(b.nome,"pt-BR");});
+  var tb=document.getElementById("tb-vol");if(!tb)return;
+  if(!lista.length){tb.innerHTML="<tr><td colspan=\"10\" class=\"empty\">Sem registros</td></tr>";return;}
+  var html="";var totRec=0,totPrev=0;
+  lista.forEach(function(d){
+    var pend=(d.sessoes||0)-(d.pagas||0);var vp=valorPlano(d);totRec+=vp.recebido;totPrev+=vp.pendente;
+    html+="<tr><td><b style=\"cursor:pointer;color:var(--accent)\" onclick=\"abrirFicha(\'"+esc(d.nome)+"\')\"><u>"+d.nome+"</u></b></td>"
+      +"<td>"+(d.convenio||"--")+"</td><td>"+(d.duracao||"--")+"min</td><td>"+fmtD(d.data)+"</td>"
+      +"<td style=\"text-align:center\">"+(d.sessoes||0)+"</td><td style=\"text-align:center\">"+(d.pagas||0)+"</td>"
+      +"<td style=\"text-align:center;font-weight:500;color:"+(pend>0?"var(--red)":"var(--green)")+"\">"+pend+"</td>"
+      +"<td>"+fmt(vp.pendente)+"</td><td>"+(d.guia||"--")+"</td><td>"+acoes(d.id)+"</td></tr>";
+  });
+  tb.innerHTML=html;
+  document.getElementById("tot-vol").innerHTML="<span class=\"total-item\">Recebido: <strong class=\"verde\">"+fmt(totRec)+"</strong></span><span class=\"total-item\">A receber: <strong class=\"amarelo\">"+fmt(totPrev)+"</strong></span><span class=\"total-item\">Aluguel: <strong class=\"vermelho\">-"+fmt(VOLARE_ALUGUEL)+"</strong></span><span class=\"total-item\">Liquido est.: <strong class=\"roxo\">"+fmt(totRec+totPrev-VOLARE_ALUGUEL)+"</strong></span>";
+}
+
+function renderAmar(){
+  var lista=dados.filter(function(d){return isAmar(d.origem);}).sort(function(a,b){return a.nome.localeCompare(b.nome,"pt-BR");});
+  var tb=document.getElementById("tb-amar");if(!tb)return;
+  if(!lista.length){tb.innerHTML="<tr><td colspan=\"11\" class=\"empty\">Sem registros</td></tr>";return;}
+  var html="";var totRec=0,totPrev=0;
+  lista.forEach(function(d){
+    var pend=(d.sessoes||0)-(d.pagas||0);var vp=valorPlano(d);totRec+=vp.recebido;totPrev+=vp.pendente;
+    html+="<tr><td><b style=\"cursor:pointer;color:var(--accent)\" onclick=\"abrirFicha(\'"+esc(d.nome)+"\')\"><u>"+d.nome+"</u></b></td>"
+      +"<td>"+diaLabel(d.origem)+"</td><td>"+(d.convenio||"--")+"</td><td>"+(d.duracao||"--")+"min</td><td>"+fmtD(d.data)+"</td>"
+      +"<td style=\"text-align:center\">"+(d.sessoes||0)+"</td><td style=\"text-align:center\">"+(d.pagas||0)+"</td>"
+      +"<td style=\"text-align:center;font-weight:500;color:"+(pend>0?"var(--red)":"var(--green)")+"\">"+pend+"</td>"
+      +"<td>"+fmt(vp.pendente)+"</td><td>"+(d.guia||"--")+"</td><td>"+acoes(d.id)+"</td></tr>";
+  });
+  tb.innerHTML=html;
+  document.getElementById("tot-amar").innerHTML="<span class=\"total-item\">Recebido (50%): <strong class=\"verde\">"+fmt(totRec)+"</strong></span><span class=\"total-item\">A receber (50%): <strong class=\"amarelo\">"+fmt(totPrev)+"</strong></span>";
+}
+
+function renderNF(){
+  var pend=dados.filter(function(d){return d.origem==="particular"&&d.status==="pago"&&!d.nf;});
+  var emit=dados.filter(function(d){return d.origem==="particular"&&d.nf;}).sort(function(a,b){return (b.nfdata||"").localeCompare(a.nfdata||"");});
+  var elP=document.getElementById("card-nf-pend");
+  var elE=document.getElementById("card-nf-emit");
+  if(elP){
+    if(!pend.length){elP.innerHTML="<div class=\"empty\">Todas as notas fiscais estao em dia!</div>";}
+    else{
+      var h="<div class=\"card-header\"><span class=\"card-title\">"+pend.length+" nota(s) pendente(s)</span></div>";
+      pend.forEach(function(d){h+="<div class=\"nf-row\"><div><b>"+d.nome+"</b><div style=\"font-size:12px;color:var(--text3)\">Sessao: "+fmtD(d.data)+" - Pgto: "+fmtD(d.datapgto)+" - "+fmt(d.valor||0)+"</div></div><button class=\"btn btn-sm btn-primary\" onclick=\"abrirModalNF("+d.id+")\">>Emitir</button></div>";});
+      elP.innerHTML=h;
+    }
+  }
+  if(elE){
+    if(!emit.length){elE.innerHTML="<div class=\"empty\">Nenhuma nota emitida ainda</div>";}
+    else{
+      var h="<div class=\"card-header\"><span class=\"card-title\">"+emit.length+" nota(s) emitida(s)</span></div>";
+      emit.forEach(function(d){h+="<div class=\"nf-row\"><div><b>"+d.nome+"</b><div style=\"font-size:12px;color:var(--text3)\">Sessao: "+fmtD(d.data)+" - "+fmt(d.valor||0)+"</div></div><div style=\"text-align:right\"><span class=\"badge b-nf-ok\">OK "+fmtD(d.nfdata)+"</span>"+(d.nfnum?"<div style=\"font-size:11px;color:var(--text3);margin-top:3px\">"+d.nfnum+"</div>":"")+"</div></div>";});
+      elE.innerHTML=h;
+    }
+  }
+}
+
+function renderAlertas(){
+  var el=document.getElementById("lista-alertas");if(!el)return;
+  var al=[];
+  dados.filter(function(d){return d.status==="atraso";}).forEach(function(d){al.push({tipo:"danger",msg:"<b>"+d.nome+"</b> - pagamento em atraso desde "+fmtD(d.data)+" - "+fmt(d.valor||0)});});
+  dados.filter(function(d){return d.origem!=="particular"&&((d.sessoes||0)-(d.pagas||0))>0;}).forEach(function(d){var pend=(d.sessoes||0)-(d.pagas||0);var vp=valorPlano(d);al.push({tipo:"warning",msg:"<b>"+d.nome+"</b> ("+origemLabel(d.origem)+") - "+pend+" sessao(oes) sem repasse - prev. "+fmt(vp.pendente)});});
+  var nfP=dados.filter(function(d){return d.origem==="particular"&&d.status==="pago"&&!d.nf;}).length;
+  if(nfP>0)al.push({tipo:"warning",msg:nfP+" nota(s) fiscal(is) pendente(s) de emissao"});
+  if(!al.length){el.innerHTML="<div class=\"alert success\"><span>OK</span><span>Nenhum alerta. Tudo em dia!</span></div>";return;}
+  var h="";al.forEach(function(a){h+="<div class=\"alert "+a.tipo+"\"><span>"+(a.tipo==="danger"?"!":".")+"</span><span style=\"font-size:13px\">"+a.msg+"</span></div>";});
+  el.innerHTML=h;
+}
+
+function initDemFiltros(){
+  var anos=new Set();var meses=["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
+  dados.forEach(function(d){if(d.data)anos.add(d.data.slice(0,4));});
+  anos.add(String(new Date().getFullYear()));
+  var selAno=document.getElementById("dem-ano");
+  selAno.innerHTML=[...anos].sort().reverse().map(function(a){return "<option>"+a+"</option>";}).join("");
+  var selMes=document.getElementById("dem-mes");
+  selMes.innerHTML=meses.map(function(m,i){return "<option value=\""+(i+1<10?"0":"")+(i+1)+"\">"+m+"</option>";}).join("");
+  selMes.value=String(new Date().getMonth()+1).padStart(2,"0");
+}
+
+function renderDemonstrativo(){
+  var tipo=document.getElementById("dem-tipo").value;
+  var mes=document.getElementById("dem-mes").value;
+  var ano=document.getElementById("dem-ano").value;
+  var orig=document.getElementById("dem-origem").value;
+  document.getElementById("dem-mes").style.display=tipo==="mensal"?"":"none";
+  var statusFilt=document.getElementById("dem-status")?document.getElementById("dem-status").value:"";
+  var lista=dados;
+  if(tipo==="mensal")lista=lista.filter(function(d){return (d.data||"").startsWith(ano+"-"+mes);});
+  else lista=lista.filter(function(d){return (d.data||"").startsWith(ano);});
+  if(orig){if(orig==="amar")lista=lista.filter(function(d){return isAmar(d.origem);});else lista=lista.filter(function(d){return d.origem===orig;});}
+  if(statusFilt){
+    if(statusFilt==="plano")lista=lista.filter(function(d){return d.origem!=="particular";});
+    else lista=lista.filter(function(d){return d.origem==="particular"&&d.status===statusFilt;});
+  }
+  var part=lista.filter(function(d){return d.origem==="particular";});
+  var pagoPart=part.filter(function(d){return d.status==="pago";}).reduce(function(a,b){return a+(b.valor||0);},0);
+  var pendPart=part.filter(function(d){return d.status==="pendente"||d.status==="atraso";}).reduce(function(a,b){return a+(b.valor||0);},0);
+  var pagoVol=0,pendVol=0;lista.filter(function(d){return d.origem==="volare";}).forEach(function(d){var vp=valorPlano(d);pagoVol+=vp.recebido;pendVol+=vp.pendente;});
+  var liqVol=pagoVol+pendVol-(tipo==="mensal"?VOLARE_ALUGUEL:VOLARE_ALUGUEL*12);
+  var pagoAmar=0,pendAmar=0;lista.filter(function(d){return isAmar(d.origem);}).forEach(function(d){var vp=valorPlano(d);pagoAmar+=vp.recebido;pendAmar+=vp.pendente;});
+  var ms=["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
+  var periodo=tipo==="mensal"?ms[parseInt(mes)-1]+"/"+ano:ano;
+  var demHtml="<div class=\"dem-grid\">"
+    +"<div class=\"dem-card\"><div class=\"dem-label\">Total recebido</div><div class=\"dem-val verde\">"+fmt(pagoPart+pagoVol+pagoAmar)+"</div><div class=\"dem-sub\">"+periodo+"</div></div>"
+    +"<div class=\"dem-card\"><div class=\"dem-label\">Total previsto</div><div class=\"dem-val roxo\">"+fmt(pendPart+pendVol+pendAmar)+"</div><div class=\"dem-sub\">a receber</div></div>"
+    +"<div class=\"dem-card\"><div class=\"dem-label\">Particular</div><div class=\"dem-val\">"+fmt(pagoPart)+"</div><div class=\"dem-sub\">recebido - "+fmt(pendPart)+" pendente</div></div>"
+    +"<div class=\"dem-card\"><div class=\"dem-label\">Volare (liquido)</div><div class=\"dem-val\">"+fmt(liqVol)+"</div><div class=\"dem-sub\">desc. aluguel</div></div>"
+    +"<div class=\"dem-card\"><div class=\"dem-label\">Amar (50%)</div><div class=\"dem-val\">"+fmt(pagoAmar)+"</div><div class=\"dem-sub\">recebido - "+fmt(pendAmar)+" pendente</div></div>"
+    +"</div>";
+  if(!lista.length)demHtml+="<div class=\"alert info\"><span>i</span><span>Nenhum registro para o periodo selecionado.</span></div>";
+  else{
+    var linhas="";
+    lista.sort(function(a,b){return a.nome.localeCompare(b.nome,"pt-BR");}).forEach(function(d){
+      var isP=d.origem==="particular";
+      var valor=isP?fmt(d.valor||0):fmt((d.valorunit||0)*(d.sessoes||0));
+      var prev=isP?"":"("+fmt(valorPlano(d).pendente)+" prev.)";
+      linhas+="<tr><td>"+d.nome+"</td><td>"+origemLabel(d.origem)+"</td><td>"+fmtD(d.data)+"</td><td>"+valor+" "+prev+"</td><td>"+(isP?bSt(d.status):"<span class=\"badge b-plano\">Plano</span>")+"</td></tr>";
+    });
+    demHtml+="<div class=\"card\"><div style=\"overflow-x:auto\"><table><thead><tr><th>Paciente</th><th>Origem</th><th>Data</th><th>Valor</th><th>Status</th></tr></thead><tbody>"+linhas+"</tbody></table></div></div>";
+  }
+  document.getElementById("dem-content").innerHTML=demHtml;
+}
+
+// ── AGENDA ─────────────────────────────────────────────────
+function getSemana(offset){
+  var hoje=new Date();var dia=hoje.getDay();
+  var seg=new Date(hoje);seg.setDate(hoje.getDate()-(dia===0?6:dia-1)+(offset*7));
+  var dias=[];
+  for(var i=0;i<7;i++){var d=new Date(seg);d.setDate(seg.getDate()+i);dias.push(d);}
+  return dias;
+}
+function fmtDiaSem(d){return ["Dom","Seg","Ter","Qua","Qui","Sex","Sab"][d.getDay()];}
+function fmtDM(d){return String(d.getDate()).padStart(2,"0")+"/"+String(d.getMonth()+1).padStart(2,"0");}
+function renderAgenda(){
+  var dias=getSemana(semanaOffset);
+  var hojeISO=fmtISO(new Date());
+  var ms=["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
+  document.getElementById("ag-titulo").textContent="Semana de "+fmtDM(dias[0])+" a "+fmtDM(dias[6])+" de "+ms[dias[0].getMonth()]+" "+dias[0].getFullYear();
+  var thead=document.getElementById("ag-head");
+  var headerRow="<tr><th style=\"width:55px\">Hora</th>";
+  dias.forEach(function(d){
+    var iso=fmtISO(d);var isHoje=iso===hojeISO;
+    var bg=isHoje?"background:var(--accent-light);color:var(--accent)":"";
+    headerRow+="<th style=\""+bg+"\">"+fmtDiaSem(d)+"<br><span style=\"font-size:14px;font-weight:500\">"
+      +fmtDM(d)+"</span><br><button onclick=\"agAbrir(\'"+iso+"\',null)\" style=\"font-size:10px;padding:2px 7px;cursor:pointer;border:1px solid var(--border2);border-radius:4px;background:var(--surface);font-family:inherit;margin-top:2px\">+ Agendar</button></th>";
+  });
+  headerRow+="</tr>";
+  thead.innerHTML=headerRow;
+  var tbody=document.getElementById("ag-body");var bodyRows="";
+  HORAS.forEach(function(hora){
+    var row="<tr><td class=\"ag-hora\">"+hora+"</td>";
+    dias.forEach(function(d){
+      var iso=fmtISO(d);
+      var ags=agendamentos.filter(function(a){return a.data===iso&&a.hora===hora;});
+      var cellContent="";
+      if(ags.length){
+        ags.forEach(function(a){
+          var ok=a.confirmado?"<span class=\"badge b-pago\" style=\"font-size:10px\">OK</span>":"<span class=\"badge b-agend\" style=\"font-size:10px\">Agend.</span>";
+          var regBtn=!a.confirmado?"<button onclick=\"agConfirmar(\'"+a.id+"\');\" style=\"font-size:10px;padding:1px 6px;cursor:pointer;border:1px solid var(--accent);border-radius:3px;background:transparent;color:var(--accent);font-family:inherit;display:block;margin-top:2px\">Registrar</button>":"";
+          var delBtn="<button onclick=\"agExcluir(\'"+a.id+"\');\" style=\"float:right;font-size:10px;border:none;background:none;cursor:pointer;color:var(--text3)\">x</button>";
+          cellContent+="<div class=\"ag-card\">"+delBtn+ok+"<div style=\"font-weight:500;margin-top:1px;font-size:11px\">"+a.nome+"</div><div style=\"font-size:10px;color:var(--text3)\">"+origemLabel(a.origem)+"</div>"+regBtn+"</div>";
+        });
+      }else{
+        cellContent="<div class=\"ag-slot\" onclick=\"agAbrir(\'"+iso+"\',\'"+hora+"\')\"></div>";
+      }
+      row+="<td>"+cellContent+"</td>";
+    });
+    row+="</tr>";bodyRows+=row;
+  });
+  tbody.innerHTML=bodyRows;
+}
+function semanaAnterior(){semanaOffset--;renderAgenda();}
+function proximaSemana(){semanaOffset++;renderAgenda();}
+function semanaAtual(){semanaOffset=0;renderAgenda();}
+
+function agAbrir(data,hora){
+  document.getElementById("ag-data").value=data||fmtISO(new Date());
+  document.getElementById("ag-hora").value=hora||"08:00";
+  document.getElementById("ag-obs").value="";
+  document.getElementById("ag-valor").value="";
+  document.getElementById("ag-tipo").value="individual";
+  var nomes=[...new Set(dados.map(function(d){return d.nome;}))].sort(function(a,b){return a.localeCompare(b,"pt-BR");});
+  var sel=document.getElementById("ag-paciente");
+  sel.innerHTML="<option value=\"__novo__\">+ Novo paciente</option>"+nomes.map(function(n){return "<option value=\""+n+"\">"+n+"</option>";}).join("");
+  if(nomes.length)sel.value=nomes[0];
+  agPreencherOrigem();
+  document.getElementById("ov-agenda").classList.add("open");
+}
+function agPreencherOrigem(){
+  var nome=document.getElementById("ag-paciente").value;
+  var novo=nome==="__novo__";
+  document.getElementById("ag-novo-wrap").style.display=novo?"block":"none";
+  if(!novo){
+    var regs=dados.filter(function(d){return d.nome===nome;});
+    if(regs.length){
+      var last=regs[regs.length-1];
+      document.getElementById("ag-origem").value=last.origem||"particular";
+      agAtualizarCampos();
+      if(last.origem==="particular"){document.getElementById("ag-valor").value=last.valor||"";}
+    }
+  }
+}
+function agAtualizarCampos(){
+  var o=document.getElementById("ag-origem").value;
+  var isP=o==="particular";
+  document.getElementById("ag-part-campos").style.display=isP?"block":"none";
+  document.getElementById("ag-plano-campos").style.display=isP?"none":"block";
+  if(!isP){
+    var tab=isAmar(o)?CONVENIOS.amar:CONVENIOS.volare;
+    var sel=document.getElementById("ag-convenio");
+    sel.innerHTML=Object.keys(tab).map(function(k){return "<option>"+k+"</option>";}).join("");
+    var nome=document.getElementById("ag-paciente").value;
+    var reg=dados.filter(function(d){return d.nome===nome&&d.origem===o;}).slice(-1)[0];
+    if(reg&&reg.convenio)sel.value=reg.convenio;
+    if(reg&&reg.duracao)document.getElementById("ag-duracao").value=reg.duracao;
+    agAutoValor();
+  }
+}
+function agAutoValor(){
+  var o=document.getElementById("ag-origem").value;if(o==="particular")return;
+  var tab=isAmar(o)?CONVENIOS.amar:CONVENIOS.volare;
+  var conv=document.getElementById("ag-convenio").value;
+  var dur=parseInt(document.getElementById("ag-duracao").value)||20;
+  document.getElementById("ag-valor-plano").value=(tab[conv]||{})[dur]||0;
+}
+async function salvarAgendamento(){
+  var pacSel=document.getElementById("ag-paciente").value;
+  var novo=pacSel==="__novo__";
+  var nome=novo?document.getElementById("ag-novo-nome").value.trim():pacSel;
+  if(!nome){alert("Informe o nome do paciente.");return;}
+  var o=document.getElementById("ag-origem").value;var isP=o==="particular";
+  var payload={
+    paciente_id:0,
+    nome:nome,
+    origem:o,
+    data:document.getElementById("ag-data").value,
+    hora:document.getElementById("ag-hora").value,
+    tipo:isP?document.getElementById("ag-tipo").value:"individual",
+    valor:isP?parseFloat(document.getElementById("ag-valor").value)||0:0,
+    observacao:document.getElementById("ag-obs").value.trim()
+  };
+  try{
+    var response=await fetch("/api/agendamentos",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+    var json=await response.json();
+    if(json.success){
+      await carregarAgendamentos();
+      fecharOv("ov-agenda");
+      renderAgenda();
+    }else{
+      alert("Erro ao salvar agendamento: "+json.error);
+    }
+  }catch(e){
+    alert("Erro ao salvar agendamento: "+e.message);
+  }
+}
+async function agExcluir(id){
+  if(!confirm("Remover agendamento?"))return;
+  try{
+    var response=await fetch("/api/agendamentos/"+id,{method:"DELETE"});
+    var json=await response.json();
+    if(json.success){
+      await carregarAgendamentos();
+      renderAgenda();
+    }else{
+      alert("Erro ao remover agendamento");
+    }
+  }catch(e){
+    alert("Erro ao remover agendamento: "+e.message);
+  }
+}
+function agConfirmar(id){
+  id=parseInt(id);
+  confirmarAgId=id;var ag=agendamentos.find(function(a){return a.id===id;});if(!ag)return;
+  var isP=ag.origem==="particular";
+  var resumo="<b>"+ag.nome+"</b><br>"+origemLabel(ag.origem)+" - "+fmtD(ag.data)+" as "+ag.hora+"<br>";
+  resumo+=isP?"Valor: <b>"+fmt(ag.valor)+"</b> - "+(ag.tipopart==="plano4"?"Plano 4":"Individual"):"Convenio: <b>"+ag.convenio+"</b> - "+ag.duracao+"min - Valor: <b>"+fmt(ag.valorunit)+"</b>";
+  if(ag.obs)resumo+="<br>Obs: "+ag.obs;
+  document.getElementById("conf-resumo").innerHTML=resumo;
+  document.getElementById("conf-status").value="pendente";
+  document.getElementById("conf-datapgto").value="";
+  document.getElementById("conf-forma").value="PIX";
+  document.getElementById("ov-confirmar").classList.add("open");
+}
+async function confirmarRegistro(){
+  var ag=agendamentos.find(function(a){return a.id===confirmarAgId;});if(!ag)return;
+  var isP=ag.origem==="particular";
+  var payload={
+    paciente_id:ag.paciente_id||0,
+    nome:ag.nome,
+    origem:ag.origem,
+    tipopart:ag.tipopart||"individual",
+    data:ag.data,
+    datapgto:document.getElementById("conf-datapgto").value,
+    valor:isP?ag.valor:0,
+    status:isP?document.getElementById("conf-status").value:"plano",
+    nf:false,
+    nfdata:"",
+    nfnum:"",
+    forma:isP?document.getElementById("conf-forma").value:"",
+    convenio:ag.convenio||"",
+    duracao:ag.duracao||"",
+    valorunit:ag.valorunit||0,
+    guia:"",
+    sessoes:isP?0:1,
+    pagas:0,
+    obs:ag.obs||""
+  };
+  try{
+    var response=await fetch("/api/sessoes",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+    var json=await response.json();
+    if(json.success){
+      await fetch("/api/agendamentos/"+confirmarAgId,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({confirmado:true})});
+      await carregarAgendamentos();
+      fecharOv("ov-confirmar");
+      render();
+      renderAgenda();
+    }else{
+      alert("Erro ao confirmar registro: "+json.error);
+    }
+  }catch(e){
+    alert("Erro ao confirmar registro: "+e.message);
+  }
+}
+
+// ── MODAL NF ──────────────────────────────────────────────
+function abrirModalNF(id){
+  nfEditId=id;
+  document.getElementById("nf-data-emissao").value=fmtISO(new Date());
+  document.getElementById("nf-numero").value="";
+  document.getElementById("ov-nf").classList.add("open");
+}
+function confirmarNF(){
+  if(!nfEditId)return;
+  var data=document.getElementById("nf-data-emissao").value;
+  var num=document.getElementById("nf-numero").value.trim();
+  if(!data){alert("Informe a data de emissao.");return;}
+  dados=dados.map(function(d){return d.id===nfEditId?Object.assign({},d,{nf:true,nfdata:data,nfnum:num}):d;});
+  salvarLS();render();fecharOv("ov-nf");fecharOv("ov-ficha");
+}
+var tabNF="pendente";
+function mudarTabNF(tab,el){
+  tabNF=tab;
+  document.querySelectorAll("#sec-nf .tab").forEach(function(t){t.classList.remove("active");});
+  el.classList.add("active");
+  document.getElementById("nf-pend-sec").style.display=tab==="pendente"?"block":"none";
+  document.getElementById("nf-emit-sec").style.display=tab==="emitidas"?"block":"none";
+}
+
+// ── MODAL NOVO/EDITAR ─────────────────────────────────────
+function abrirModal(origemDef){
+  editId=null;document.getElementById("modal-titulo").textContent="Novo registro";
+  document.getElementById("f-nome").value="";document.getElementById("f-origem").value=origemDef||"particular";
+  document.getElementById("f-valor").value="";document.getElementById("f-tipo-part").value="individual";
+  document.getElementById("f-forma").value="PIX";document.getElementById("f-data").value=fmtISO(new Date());
+  document.getElementById("f-data-pgto").value="";document.getElementById("f-status").value="pendente";
+  document.getElementById("f-data-plano").value=fmtISO(new Date());
+  document.getElementById("f-guia").value="";document.getElementById("f-sessoes").value="";
+  document.getElementById("f-pagas").value="";document.getElementById("f-obs").value="";
+  atualizarCampos();document.getElementById("overlay").classList.add("open");
+}
+function novoParaPaciente(nome){fecharOv("ov-ficha");abrirModal();document.getElementById("f-nome").value=nome;}
+function editar(id){
+  var d=dados.find(function(x){return x.id===id;});if(!d)return;
+  editId=id;document.getElementById("modal-titulo").textContent="Editar registro";
+  document.getElementById("f-nome").value=d.nome||"";document.getElementById("f-origem").value=d.origem||"particular";
+  document.getElementById("f-valor").value=d.valor||"";document.getElementById("f-tipo-part").value=d.tipopart||"individual";
+  document.getElementById("f-forma").value=d.forma||"PIX";document.getElementById("f-data").value=d.data||"";
+  document.getElementById("f-data-pgto").value=d.datapgto||"";document.getElementById("f-status").value=d.status||"pendente";
+  document.getElementById("f-data-plano").value=d.data||"";document.getElementById("f-guia").value=d.guia||"";
+  document.getElementById("f-sessoes").value=d.sessoes||"";document.getElementById("f-pagas").value=d.pagas||"";
+  document.getElementById("f-valor-plano").value=d.valorunit||"";document.getElementById("f-obs").value=d.obs||"";
+  atualizarCampos();
+  if(d.convenio)document.getElementById("f-convenio").value=d.convenio;
+  if(d.duracao)document.getElementById("f-duracao").value=d.duracao;
+  document.getElementById("overlay").classList.add("open");
+}
+function atualizarCampos(){
+  var o=document.getElementById("f-origem").value;var isP=o==="particular";
+  document.getElementById("campos-particular").style.display=isP?"block":"none";
+  document.getElementById("campos-plano").style.display=isP?"none":"block";
+  if(!isP){
+    var tab=isAmar(o)?CONVENIOS.amar:CONVENIOS.volare;
+    var sel=document.getElementById("f-convenio");
+    sel.innerHTML=Object.keys(tab).map(function(k){return "<option>"+k+"</option>";}).join("");
+    autoValor();
+  }
+}
+function autoValor(){
+  var o=document.getElementById("f-origem").value;if(o==="particular")return;
+  var tab=isAmar(o)?CONVENIOS.amar:CONVENIOS.volare;
+  var conv=document.getElementById("f-convenio").value;
+  var dur=parseInt(document.getElementById("f-duracao").value)||20;
+  document.getElementById("f-valor-plano").value=(tab[conv]||{})[dur]||0;
+}
+function fecharModal(){document.getElementById("overlay").classList.remove("open");}
+function salvar(){
+  var nome=document.getElementById("f-nome").value.trim();if(!nome){alert("Informe o nome do paciente.");return;}
+  var origem=document.getElementById("f-origem").value;var isP=origem==="particular";
+  var reg={id:editId||Date.now(),nome:nome,origem:origem,
+    data:isP?document.getElementById("f-data").value:document.getElementById("f-data-plano").value,
+    datapgto:isP?document.getElementById("f-data-pgto").value:"",
+    valor:isP?parseFloat(document.getElementById("f-valor").value)||0:0,
+    tipopart:isP?document.getElementById("f-tipo-part").value:"",
+    status:isP?document.getElementById("f-status").value:"plano",
+    nf:editId?(dados.find(function(d){return d.id===editId;})||{}).nf||false:false,
+    nfdata:editId?(dados.find(function(d){return d.id===editId;})||{}).nfdata||"":"",
+    nfnum:editId?(dados.find(function(d){return d.id===editId;})||{}).nfnum||"":"",
+    forma:isP?document.getElementById("f-forma").value:"",
+    convenio:isP?"":document.getElementById("f-convenio").value,
+    duracao:isP?"":document.getElementById("f-duracao").value,
+    valorunit:isP?0:parseFloat(document.getElementById("f-valor-plano").value)||0,
+    guia:document.getElementById("f-guia").value.trim(),
+    sessoes:parseInt(document.getElementById("f-sessoes").value)||0,
+    pagas:parseInt(document.getElementById("f-pagas").value)||0,
+    obs:document.getElementById("f-obs").value.trim()};
+  if(editId)dados=dados.map(function(d){return d.id===editId?reg:d;});else dados.push(reg);
+  salvarLS();fecharModal();render();
+}
+function excluir(id){
+  if(!confirm("Remover este registro?"))return;
+  dados=dados.filter(function(d){return d.id!==id;});salvarLS();render();fecharOv("ov-ficha");
+}
+
+// ── NAVEGACAO ────────────────────────────────────────────
+function ir(aba){
+  document.querySelectorAll(".section").forEach(function(s){s.classList.remove("active");});
+  document.querySelectorAll(".nav-item").forEach(function(n){n.classList.remove("active");});
+  var sec=document.getElementById("sec-"+aba);if(sec)sec.classList.add("active");
+  var navEl=document.querySelector(".nav-item[data-aba=\""+aba+"\"]");if(navEl)navEl.classList.add("active");
+  if(aba==="demonstrativo")renderDemonstrativo();
+  if(aba==="agenda")renderAgenda();
+}
+
+// ── RENDER GERAL ─────────────────────────────────────────
+function render(){renderStats();renderTodos();renderPacientes();renderParticular();renderVolare();renderAmar();renderNF();renderAlertas();}
+
+// ── OVERLAY CLOSE ────────────────────────────────────────
+["overlay","ov-ficha","ov-nf","ov-agenda","ov-confirmar"].forEach(function(id){
+  var el=document.getElementById(id);
+  if(el)el.addEventListener("click",function(e){if(e.target===e.currentTarget){if(id==="overlay")fecharModal();else fecharOv(id);}});
 });
+
+initDemFiltros();carregarAgendamentos().then(function(){render();});
 </script>
 </body>
 </html>
