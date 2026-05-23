@@ -24,6 +24,8 @@ class Database:
 
     def get_pacientes(self, user_id=None):
         """Retorna todos os pacientes"""
+        if not self.client:
+            return []
         try:
             response = self.client.table('pacientes').select('*').execute()
             return response.data
@@ -33,6 +35,8 @@ class Database:
 
     def get_paciente(self, paciente_id):
         """Retorna um paciente específico"""
+        if not self.client:
+            return None
         try:
             response = self.client.table('pacientes').select('*').eq('id', paciente_id).execute()
             return response.data[0] if response.data else None
@@ -42,6 +46,8 @@ class Database:
 
     def criar_paciente(self, nome: str, **kwargs):
         """Cria um novo paciente"""
+        if not self.client:
+            return None
         try:
             data = {'nome': nome, **kwargs}
             response = self.client.table('pacientes').insert(data).execute()
@@ -52,6 +58,8 @@ class Database:
 
     def atualizar_paciente(self, paciente_id, **kwargs):
         """Atualiza um paciente"""
+        if not self.client:
+            return None
         try:
             response = self.client.table('pacientes').update(kwargs).eq('id', paciente_id).execute()
             return response.data[0] if response.data else None
@@ -61,6 +69,8 @@ class Database:
 
     def deletar_paciente(self, paciente_id):
         """Deleta um paciente"""
+        if not self.client:
+            return False
         try:
             response = self.client.table('pacientes').delete().eq('id', paciente_id).execute()
             return True
@@ -74,6 +84,8 @@ class Database:
 
     def get_sessoes(self, filters=None):
         """Retorna sessões com filtros opcionais"""
+        if not self.client:
+            return []
         try:
             query = self.client.table('sessoes').select('*')
             if filters:
@@ -87,6 +99,8 @@ class Database:
 
     def criar_sessao(self, paciente_id: int, data_sessao: str, **kwargs):
         """Cria uma nova sessão"""
+        if not self.client:
+            return None
         try:
             data = {
                 'paciente_id': paciente_id,
@@ -102,6 +116,8 @@ class Database:
 
     def atualizar_sessao(self, sessao_id, **kwargs):
         """Atualiza uma sessão"""
+        if not self.client:
+            return None
         try:
             kwargs['updated_at'] = datetime.now().isoformat()
             response = self.client.table('sessoes').update(kwargs).eq('id', sessao_id).execute()
@@ -112,6 +128,8 @@ class Database:
 
     def deletar_sessao(self, sessao_id):
         """Deleta uma sessão"""
+        if not self.client:
+            return False
         try:
             response = self.client.table('sessoes').delete().eq('id', sessao_id).execute()
             return True
@@ -125,6 +143,8 @@ class Database:
 
     def get_agendamentos(self, data=None):
         """Retorna agendamentos"""
+        if not self.client:
+            return []
         try:
             query = self.client.table('agendamentos').select('*')
             if data:
@@ -137,6 +157,8 @@ class Database:
 
     def criar_agendamento(self, paciente_id: int, data: str, hora: str, **kwargs):
         """Cria um novo agendamento"""
+        if not self.client:
+            return None
         try:
             data_agend = {
                 'paciente_id': paciente_id,
@@ -153,6 +175,8 @@ class Database:
 
     def atualizar_agendamento(self, agendamento_id, **kwargs):
         """Atualiza um agendamento"""
+        if not self.client:
+            return None
         try:
             response = self.client.table('agendamentos').update(kwargs).eq('id', agendamento_id).execute()
             return response.data[0] if response.data else None
@@ -162,6 +186,8 @@ class Database:
 
     def deletar_agendamento(self, agendamento_id):
         """Deleta um agendamento"""
+        if not self.client:
+            return False
         try:
             response = self.client.table('agendamentos').delete().eq('id', agendamento_id).execute()
             return True
@@ -175,6 +201,8 @@ class Database:
 
     def registrar_nf(self, sessao_id: int, data_emissao: str, numero_nf: str = None):
         """Registra uma nota fiscal"""
+        if not self.client:
+            return None
         try:
             data = {
                 'sessao_id': sessao_id,
@@ -190,6 +218,8 @@ class Database:
 
     def get_nfs_pendentes(self):
         """Retorna NFs pendentes de emissão"""
+        if not self.client:
+            return []
         try:
             response = self.client.table('sessoes').select(
                 'id, paciente_id (nome), data_sessao, valor, origem'
@@ -206,6 +236,9 @@ class Database:
     def gerar_alertas(self):
         """Gera alertas baseado nos dados"""
         alertas = []
+
+        if not self.client:
+            return alertas
 
         # Alertas de pagamento atrasado
         try:
